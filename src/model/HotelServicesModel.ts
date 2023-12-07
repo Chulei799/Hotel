@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const HotelServicesSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        auto: true,
-        alias: '$oid'
+        auto: true
     },
     hotelServiceId: {
         type: Number,

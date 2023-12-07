@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 const roomsInventorySchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        auto: true,
-        alias: '$oid'
+        auto: true
     },
     roomInventoryId: {
         type: Number,
