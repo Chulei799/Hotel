@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const roomsSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
     number: {
         type: Number,
         required: true,

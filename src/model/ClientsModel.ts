@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const clientsSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
     surname: {
         type: String,
         required: true

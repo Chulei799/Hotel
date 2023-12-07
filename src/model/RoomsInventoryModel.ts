@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const roomsInventorySchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
     inventoryId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true

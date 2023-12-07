@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 const clientsServicesSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true
-    },
     clientId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true

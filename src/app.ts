@@ -26,8 +26,6 @@ async function main() {
 }
 
 async function testCRUDOperations() {
-  //Find next Client id
-
   const newClient = {
     surname: 'Doe',
     name: 'John',
@@ -39,7 +37,7 @@ async function testCRUDOperations() {
   //Save new Client
   await new ClientsModel(newClient).save();
 
-  //Find this client by clientId
+  //Find this client by surname and name
   const foundClient = await ClientsModel.findOne({ surname: 'Doe', name: 'John' });
   const foundClientJSONStr = JSON.stringify(foundClient)
 
@@ -48,7 +46,7 @@ async function testCRUDOperations() {
   //Update client
   await ClientsModel.updateOne({ surname: 'Doe', name: 'John' }, { name: 'Lorem' });
 
-  //Find updated client by clientId
+  //Find updated client by surname and name
   const updatedClient = await ClientsModel.findOne({ surname: 'Doe', name: 'Lorem' });
   
   assert.equal(updatedClient?.name, 'Lorem', 'Expect that client name changed to Lorem, but got ' + updatedClient?.name);
