@@ -7,7 +7,8 @@ const InventorySchema = new mongoose.Schema({
     },
     inventoryId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     name: {
         type: String,

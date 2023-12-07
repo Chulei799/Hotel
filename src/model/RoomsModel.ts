@@ -7,7 +7,8 @@ const roomsSchema = new mongoose.Schema({
     },
     number: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,

@@ -7,7 +7,8 @@ const reservationsSchema = new mongoose.Schema({
     },
     reservationId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     clientId: {
         type: Number,

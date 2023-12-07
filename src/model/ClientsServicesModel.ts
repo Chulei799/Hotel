@@ -7,7 +7,8 @@ const clientsServicesSchema = new mongoose.Schema({
     },
     clientsServicesId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     clientId: {
         type: Number,

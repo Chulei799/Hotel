@@ -7,7 +7,8 @@ const employeesSchema = new mongoose.Schema({
     },
     employeeId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     surname: {
         type: String,

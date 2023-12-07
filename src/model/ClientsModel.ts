@@ -7,7 +7,8 @@ const clientsSchema = new mongoose.Schema({
     },
     clientId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     surname: {
         type: String,

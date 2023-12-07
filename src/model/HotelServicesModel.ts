@@ -7,7 +7,8 @@ const HotelServicesSchema = new mongoose.Schema({
     },
     hotelServiceId: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     name: {
         type: String,
