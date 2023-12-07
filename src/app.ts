@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 import 'dotenv/config'
-import ClientsModel from './model/ClientsModel';
-import ClientsServicesModel from './model/ClientsServicesModel';
-import EmployeesModel from './model/EmployeesModel';
-import HotelServicesModel from './model/HotelServicesModel';
-import InventoryModel from './model/InventoryModel';
-import ReservationsModel from './model/ReservationsModel';
-import RoomsInventoryModel from './model/RoomsInventoryModel';
-import RoomsModel from './model/RoomsModel';
+import ClientsModel, { IClients } from './model/ClientsModel';
+import ClientsServicesModel, { IClientsServices } from './model/ClientsServicesModel';
+import EmployeesModel, { IEmployees } from './model/EmployeesModel';
+import HotelServicesModel, { IHotelServices } from './model/HotelServicesModel';
+import InventoryModel, { IInventory } from './model/InventoryModel';
+import ReservationsModel, { IReservations } from './model/ReservationsModel';
+import RoomsInventoryModel, { IRoomsInventory } from './model/RoomsInventoryModel';
+import RoomsModel, { IRooms } from './model/RoomsModel';
 import assert from 'assert';
 
 async function main() {

@@ -1,9 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const HotelServicesSchema = new mongoose.Schema({
+export interface IHotelServices extends Document {
+    name: string;
+    price: number;
+}
+
+const HotelServicesSchema = new Schema<IHotelServices>({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
@@ -14,6 +20,6 @@ const HotelServicesSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const HotelServicesModel = mongoose.model('HotelServices', HotelServicesSchema);
+const HotelServicesModel = mongoose.model<IHotelServices>('HotelServices', HotelServicesSchema);
 
 export default HotelServicesModel;

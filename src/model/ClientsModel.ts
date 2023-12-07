@@ -1,6 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const clientsSchema = new mongoose.Schema({
+export interface IClients extends Document {
+    surname: string;
+    name: string;
+    email: string;
+    phoneNumber: string;
+    birthday: Date;
+}
+
+const clientsSchema = new Schema<IClients>({
     surname: {
         type: String,
         required: true
@@ -27,6 +35,6 @@ const clientsSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const ClientsModel = mongoose.model('Clients', clientsSchema);
+const ClientsModel = mongoose.model<IClients>('Clients', clientsSchema);
 
 export default ClientsModel;

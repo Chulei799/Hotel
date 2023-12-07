@@ -1,12 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const clientsServicesSchema = new mongoose.Schema({
+export interface IClientsServices extends Document {
+    clientId: mongoose.Schema.Types.ObjectId;
+    serviceId: mongoose.Schema.Types.ObjectId;
+    date: Date;
+}
+
+const clientsServicesSchema = new Schema<IClientsServices>({
     clientId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Clients',
         required: true
     },
     serviceId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'HotelServices',
         required: true
     },
     date: {
@@ -19,6 +27,6 @@ const clientsServicesSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const ClientsServicesModel = mongoose.model('ClientsServices', clientsServicesSchema);
+const ClientsServicesModel = mongoose.model<IClientsServices>('ClientsServices', clientsServicesSchema);
 
 export default ClientsServicesModel;
