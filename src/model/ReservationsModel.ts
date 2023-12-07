@@ -5,13 +5,8 @@ const reservationsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    reservationId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     clientId: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     roomNumber: {

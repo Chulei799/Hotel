@@ -5,11 +5,6 @@ const clientsSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    clientId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     surname: {
         type: String,
         required: true

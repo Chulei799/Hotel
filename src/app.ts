@@ -27,10 +27,8 @@ async function main() {
 
 async function testCRUDOperations() {
   //Find next Client id
-  const nextID = (await ClientsModel.find().limit(1).sort({$natural:-1}))[0].clientId + 1;
 
   const newClient = {
-    clientId: nextID,
     surname: 'Doe',
     name: 'John',
     email: 'john.doe@gmail.com',
@@ -42,23 +40,23 @@ async function testCRUDOperations() {
   await new ClientsModel(newClient).save();
 
   //Find this client by clientId
-  const foundClient = await ClientsModel.findOne({clientId: nextID});
+  const foundClient = await ClientsModel.findOne({ surname: 'Doe', name: 'John' });
   const foundClientJSONStr = JSON.stringify(foundClient)
 
   assert.equal('{' + foundClientJSONStr.substring(foundClientJSONStr.indexOf(',') + 1), JSON.stringify(newClient), 'Clients not equals');
 
   //Update client
-  await ClientsModel.updateOne({clientId: nextID}, { name: 'Lorem' });
+  await ClientsModel.updateOne({ surname: 'Doe', name: 'John' }, { name: 'Lorem' });
 
   //Find updated client by clientId
-  const updatedClient = await ClientsModel.findOne({clientId: nextID});
+  const updatedClient = await ClientsModel.findOne({ surname: 'Doe', name: 'Lorem' });
   
   assert.equal(updatedClient?.name, 'Lorem', 'Expect that client name changed to Lorem, but got ' + updatedClient?.name);
 
   //Delete client
-  await ClientsModel.deleteOne({clientId: nextID});
+  await ClientsModel.deleteOne({ surname: 'Doe', name: 'Lorem' });
 
-  const noClient = await ClientsModel.findOne({clientId: nextID});
+  const noClient = await ClientsModel.findOne({ surname: 'Doe', name: 'Lorem' });
 
   assert.equal(noClient, null, 'No client should be found')
 }

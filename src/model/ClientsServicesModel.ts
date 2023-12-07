@@ -5,17 +5,12 @@ const clientsServicesSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    clientsServicesId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     clientId: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     serviceId: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     date: {

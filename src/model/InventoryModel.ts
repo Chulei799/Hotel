@@ -5,11 +5,6 @@ const InventorySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    inventoryId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     name: {
         type: String,
         required: true

@@ -5,11 +5,6 @@ const employeesSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    employeeId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     surname: {
         type: String,
         required: true

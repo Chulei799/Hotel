@@ -5,13 +5,8 @@ const roomsInventorySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
-    roomInventoryId: {
-        type: Number,
-        required: true,
-        unique: true
-    },
     inventoryId: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     roomNumber: {
