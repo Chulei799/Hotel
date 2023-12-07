@@ -1,6 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const employeesSchema = new mongoose.Schema({
+export interface IEmployees extends Document {
+    surname: string;
+    name: string;
+    email: string;
+    phoneNumber: string;
+    position: string;
+    birthday: Date;
+    salary: number;
+}
+
+const employeesSchema = new Schema<IEmployees>({
     surname: {
         type: String,
         required: true
@@ -35,6 +45,6 @@ const employeesSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const EmployeesModel = mongoose.model('employees', employeesSchema);
+const EmployeesModel = mongoose.model<IEmployees>('employees', employeesSchema);
 
 export default EmployeesModel;

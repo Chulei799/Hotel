@@ -1,6 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const InventorySchema = new mongoose.Schema({
+export interface IInventory extends Document {
+    name: string;
+    totalCount: number;
+    availableCount: number;
+}
+
+const InventorySchema = new Schema<IInventory>({
     name: {
         type: String,
         required: true
@@ -18,6 +24,6 @@ const InventorySchema = new mongoose.Schema({
     versionKey: false
 });
 
-const InventoryModel = mongoose.model('Inventory', InventorySchema);
+const InventoryModel = mongoose.model<IInventory>('Inventory', InventorySchema);
 
 export default InventoryModel;

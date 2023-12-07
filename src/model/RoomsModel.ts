@@ -1,6 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const roomsSchema = new mongoose.Schema({
+export interface IRooms extends Document {
+    number: number;
+    price: number;
+    typeOfAccommodation: ['Single', 'Double', 'Triple', 'Quadruple']
+    typeOfComfort: ['Standard', 'Superior', 'Deluxe', 'Family', 'Suite', 'Presidential'];
+    bedsCount: number;
+    booked: boolean;
+}
+
+const roomsSchema = new Schema<IRooms>({
     number: {
         type: Number,
         required: true,
@@ -11,11 +20,11 @@ const roomsSchema = new mongoose.Schema({
         required: true
     },
     typeOfAccommodation: {
-        type: Number,
+        enum: ['Single', 'Double', 'Triple', 'Quadruple'],
         required: true
     },
     typeOfComfort: {
-        type: Number,
+        enum: ['Standard', 'Superior', 'Deluxe', 'Family', 'Suite', 'Presidential'],
         required: true
     },
     bedsCount: {
@@ -31,6 +40,6 @@ const roomsSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const RoomsModel = mongoose.model('RoomsSchema', roomsSchema);
+const RoomsModel = mongoose.model<IRooms>('RoomsSchema', roomsSchema);
 
 export default RoomsModel;

@@ -1,12 +1,21 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const reservationsSchema = new mongoose.Schema({
+export interface IReservations extends Document {
+    clientId: mongoose.Schema.Types.ObjectId;
+    roomId: mongoose.Schema.Types.ObjectId;
+    checkInDate: Date;
+    checkOutDate: Date;
+}
+
+const reservationsSchema = new Schema<IReservations>({
     clientId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'Clients',
         required: true
     },
-    roomNumber: {
-        type: Number,
+    roomId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Rooms',
         required: true
     },
     checkInDate: {
@@ -24,6 +33,6 @@ const reservationsSchema = new mongoose.Schema({
     versionKey: false
 });
 
-const ReservationsModel = mongoose.model('Reservations', reservationsSchema);
+const ReservationsModel = mongoose.model<IReservations>('Reservations', reservationsSchema);
 
 export default ReservationsModel;
