@@ -1,19 +1,19 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export enum TypeOfAccomodation {
-    Single = 'Single',
-    Double = 'Double',
-    Triple = 'Triple',
-    Quadruple = 'Quadruple'
+    SINGLE = 'Single',
+    DOUBLE = 'Double',
+    TRIPLE = 'Triple',
+    QUADRUPLE = 'Quadruple'
 }
 
 export enum TypeOfComfort {
-    Standard = 'Standard',
-    Superior = 'Superior',
-    Deluxe = 'Deluxe',
-    Family = 'Family',
-    Suite = 'Suite',
-    Presidential = 'Presidential'
+    STANDARD = 'Standard',
+    SUPERIOR = 'Superior',
+    DELUXE = 'Deluxe',
+    FAMILY = 'Family',
+    SUITE = 'Suite',
+    PRESIDENTIAL = 'Presidential'
 }
 
 export interface IRooms extends Document {

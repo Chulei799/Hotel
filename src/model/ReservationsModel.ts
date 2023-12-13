@@ -1,9 +1,9 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export enum Status {
-    Confirmed = "Confirmed",
-    Pending = "Pending",
-    Canceled = "Canceled"
+    CONFIRMED = "Confirmed",
+    PENDING = "Pending",
+    CANCELED = "Canceled"
 }
 
 export interface IReservations extends Document {
