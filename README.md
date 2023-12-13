@@ -68,3 +68,11 @@ npm start
 ## Database
 
 The project uses MongoDB as the database. Make sure you have a running MongoDB instance. Update the connection string in index.ts accordingly.
+Create db_config.ts file in src folder with your credentials:
+```bash
+export class Config
+{
+    static DB_USER: string = 'YOUR_USER';
+    static DB_PASSWORD: string = 'YOUR_PASSWORD';
+}
+```
