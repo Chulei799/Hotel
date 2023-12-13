@@ -1,10 +1,17 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
+export enum Status {
+    CONFIRMED = "Confirmed",
+    PENDING = "Pending",
+    CANCELED = "Canceled"
+}
+
 export interface IReservations extends Document {
     clientId: mongoose.Schema.Types.ObjectId;
     roomId: mongoose.Schema.Types.ObjectId;
     checkInDate: Date;
     checkOutDate: Date;
+    status: Status;
 }
 
 const reservationsSchema = new Schema<IReservations>({
@@ -26,6 +33,11 @@ const reservationsSchema = new Schema<IReservations>({
     checkOutDate: {
         type: Date,
         alias: '$date',
+        required: true
+    },
+    status: {
+        type: String,
+        enum: Object.values(Status),
         required: true
     }
 }, {

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "app": "npx tsc && node lib/app.js"
+    "app": "npx ts-node src/index.ts",
+    "test": "mocha -r ts-node/register test/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,20 @@
   },
   "homepage": "https://github.com/Chulei799/Hotel#readme",
   "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
     "@types/node": "^20.10.0",
+    "@types/randomstring": "^1.1.11",
+    "chai": "^4.3.10",
     "dotenv": "^16.3.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
     "mongodb": "^6.3.0",
-    "mongoose": "^8.0.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
+    "mongoose": "^8.0.3",
+    "randomstring": "^1.3.0"
   }
 }
