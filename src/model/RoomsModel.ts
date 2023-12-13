@@ -1,10 +1,26 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
+export enum TypeOfAccomodation {
+    Single = 'Single',
+    Double = 'Double',
+    Triple = 'Triple',
+    Quadruple = 'Quadruple'
+}
+
+export enum TypeOfComfort {
+    Standard = 'Standard',
+    Superior = 'Superior',
+    Deluxe = 'Deluxe',
+    Family = 'Family',
+    Suite = 'Suite',
+    Presidential = 'Presidential'
+}
+
 export interface IRooms extends Document {
     number: number;
     price: number;
-    typeOfAccommodation: ['Single', 'Double', 'Triple', 'Quadruple']
-    typeOfComfort: ['Standard', 'Superior', 'Deluxe', 'Family', 'Suite', 'Presidential'];
+    typeOfAccommodation: TypeOfAccomodation;
+    typeOfComfort: TypeOfComfort;
     bedsCount: number;
     booked: boolean;
 }
@@ -20,11 +36,13 @@ const roomsSchema = new Schema<IRooms>({
         required: true
     },
     typeOfAccommodation: {
-        enum: ['Single', 'Double', 'Triple', 'Quadruple'],
+        type: String,
+        enum: Object.values(TypeOfAccomodation),
         required: true
     },
     typeOfComfort: {
-        enum: ['Standard', 'Superior', 'Deluxe', 'Family', 'Suite', 'Presidential'],
+        type: String,
+        enum: Object.values(TypeOfComfort),
         required: true
     },
     bedsCount: {

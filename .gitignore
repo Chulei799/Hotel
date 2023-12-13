@@ -8,6 +8,8 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 /lib
+/src/dao
+/src/db_config.ts
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
