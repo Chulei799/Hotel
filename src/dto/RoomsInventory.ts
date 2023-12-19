@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
+import { IRoomsInventory } from "../model/RoomsInventoryModel";
 
 class RoomsInventory {
-    private inventoryId: mongoose.Schema.Types.ObjectId;
-    private roomId: mongoose.Schema.Types.ObjectId;
+    private inventoryId: mongoose.Types.ObjectId;
+    private roomId: mongoose.Types.ObjectId;
     private count: number;
     private condition: string;
     private note: string;
 
-	constructor(inventoryId: mongoose.Schema.Types.ObjectId, roomId: mongoose.Schema.Types.ObjectId, count: number, condition: string, note: string) {
+	constructor(inventoryId: mongoose.Types.ObjectId, roomId: mongoose.Types.ObjectId, count: number, condition: string, note: string) {
 		this.inventoryId = inventoryId;
 		this.roomId = roomId;
 		this.count = count;
@@ -15,11 +16,11 @@ class RoomsInventory {
 		this.note = note;
 	}
 
-    public getInventoryId(): mongoose.Schema.Types.ObjectId {
+    public getInventoryId(): mongoose.Types.ObjectId {
 		return this.inventoryId;
 	}
 
-    public getRoomId(): mongoose.Schema.Types.ObjectId {
+    public getRoomId(): mongoose.Types.ObjectId {
 		return this.roomId;
 	}
 
@@ -35,11 +36,11 @@ class RoomsInventory {
 		return this.note;
 	}
 
-    public setInventoryId(value: mongoose.Schema.Types.ObjectId) {
+    public setInventoryId(value: mongoose.Types.ObjectId) {
 		this.inventoryId = value;
 	}
 
-    public setRoomId(value: mongoose.Schema.Types.ObjectId) {
+    public setRoomId(value: mongoose.Types.ObjectId) {
 		this.roomId = value;
 	}
 
@@ -55,6 +56,20 @@ class RoomsInventory {
 		this.note = value;
 	}
 
+	public toIRoomsInventory(): IRoomsInventory {
+        const roomInventory: IRoomsInventory = <IRoomsInventory> {
+            inventoryId: this.inventoryId,
+			roomId: this.roomId,
+			count: this.count,
+			condition: this.condition,
+			note: this.note
+        };
+        return roomInventory;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
+    }
 }
 
 export default RoomsInventory;

@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface ILostAndFound extends Document {
-    roomId: mongoose.Schema.Types.ObjectId;
+    roomId: mongoose.Types.ObjectId;
     item: string;
     description: string;
     dateFound: Date;

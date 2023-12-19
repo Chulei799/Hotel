@@ -1,3 +1,5 @@
+import { IInventory } from "../model/InventoryModel";
+
 class Inventory {
     private name: string;
     private totalCount: number;
@@ -31,6 +33,19 @@ class Inventory {
 
     public setAvailableCount(availableCount: number) {
         this.availableCount = availableCount;
+    }
+
+    public toIInventory(): IInventory {
+        const inventory: IInventory = <IInventory> {
+            name: this.name,
+            totalCount: this.totalCount,
+            availableCount: this.availableCount
+        };
+        return inventory;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

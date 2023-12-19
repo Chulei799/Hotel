@@ -1,8 +1,8 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IClientsServices extends Document {
-    clientId: mongoose.Schema.Types.ObjectId;
-    serviceId: mongoose.Schema.Types.ObjectId;
+    clientId: mongoose.Types.ObjectId;
+    serviceId: mongoose.Types.ObjectId;
     date: Date;
 }
 

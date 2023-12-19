@@ -1,8 +1,8 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IRoomsInventory extends Document {
-    inventoryId: mongoose.Schema.Types.ObjectId;
-    roomId: mongoose.Schema.Types.ObjectId;
+    inventoryId: mongoose.Types.ObjectId;
+    roomId: mongoose.Types.ObjectId;
     count: number;
     condition: string;
     note: string;
@@ -36,6 +36,6 @@ const roomsInventorySchema = new Schema<IRoomsInventory>({
     versionKey: false
 });
 
-const RoomsInventoryModel = mongoose.model<IRoomsInventory>('RoomsInventorySchema', roomsInventorySchema);
+const RoomsInventoryModel = mongoose.model<IRoomsInventory>('RoomsInventory', roomsInventorySchema);
 
 export default RoomsInventoryModel;

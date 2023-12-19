@@ -58,6 +58,6 @@ const roomsSchema = new Schema<IRooms>({
     versionKey: false
 });
 
-const RoomsModel = mongoose.model<IRooms>('RoomsSchema', roomsSchema);
+const RoomsModel = mongoose.model<IRooms>('Rooms', roomsSchema);
 
 export default RoomsModel;

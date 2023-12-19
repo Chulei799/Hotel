@@ -1,4 +1,4 @@
-import { TypeOfAccomodation, TypeOfComfort } from "../model/RoomsModel";
+import { IRooms, TypeOfAccomodation, TypeOfComfort } from "../model/RoomsModel";
 
 class Rooms {
     private number: number;
@@ -66,6 +66,22 @@ class Rooms {
 	public setBooked(value: boolean) {
 		this.booked = value;
 	}
+
+	public toIRooms(): IRooms {
+        const room: IRooms = <IRooms> {
+            number: this.number,
+			price: this.price,
+        	typeOfAccommodation: this.typeOfAccommodation,
+        	typeOfComfort: this.typeOfComfort,
+			bedsCount: this.bedsCount,
+			booked: this.booked
+        };
+        return room;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
+    }
 }
 
 export default Rooms;

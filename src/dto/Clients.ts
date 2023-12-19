@@ -1,3 +1,5 @@
+import { IClients } from "../model/ClientsModel";
+
 class Clients {
     private surname: string;
     private name: string;
@@ -51,6 +53,21 @@ class Clients {
 
     public setBirthday(birthday: Date) {
         this.birthday = birthday;
+    }
+
+    public toIClients(): IClients {
+        const client: IClients = <IClients> {
+            surname: this.surname,
+            name: this.name,
+            email: this.email,
+            phoneNumber: this.phoneNumber,
+            birthday: this.birthday
+        };
+        return client;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

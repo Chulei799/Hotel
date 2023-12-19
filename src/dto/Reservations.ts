@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
-import { Status } from "../model/ReservationsModel";
+import { IReservations, Status } from "../model/ReservationsModel";
 
 class Reservations {
-    private clientId: mongoose.Schema.Types.ObjectId;
-    private roomId: mongoose.Schema.Types.ObjectId;
+    private clientId: mongoose.Types.ObjectId;
+    private roomId: mongoose.Types.ObjectId;
     private checkInDate: Date;
     private checkOutDate: Date;
     private status: Status;
 
-	constructor(clientId: mongoose.Schema.Types.ObjectId, roomId: mongoose.Schema.Types.ObjectId, checkInDate: Date, checkOutDate: Date, status: Status) {
+	constructor(clientId: mongoose.Types.ObjectId, roomId: mongoose.Types.ObjectId, checkInDate: Date, checkOutDate: Date, status: Status) {
 		this.clientId = clientId;
 		this.roomId = roomId;
 		this.checkInDate = checkInDate;
@@ -17,11 +17,11 @@ class Reservations {
 	}
     
 
-    public getClientId(): mongoose.Schema.Types.ObjectId {
+    public getClientId(): mongoose.Types.ObjectId {
 		return this.clientId;
 	}
 
-    public getRoomId(): mongoose.Schema.Types.ObjectId {
+    public getRoomId(): mongoose.Types.ObjectId {
 		return this.roomId;
 	}
 
@@ -37,11 +37,11 @@ class Reservations {
         return this.status;
     }
 
-    public setClientId(value: mongoose.Schema.Types.ObjectId) {
+    public setClientId(value: mongoose.Types.ObjectId) {
 		this.clientId = value;
 	}
 
-    public setRoomId(value: mongoose.Schema.Types.ObjectId) {
+    public setRoomId(value: mongoose.Types.ObjectId) {
 		this.roomId = value;
 	}
 
@@ -55,6 +55,21 @@ class Reservations {
 
     public setStatus(status: Status) {
         this.status = status;
+    }
+
+	public toIReservations(): IReservations {
+        const reservation: IReservations = <IReservations> {
+            clientId: this.clientId,
+			roomId: this.roomId,
+			checkInDate: this.checkInDate,
+			checkOutDate: this.checkOutDate,
+        	status: this.status
+        };
+        return reservation;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

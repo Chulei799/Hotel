@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
+import { IFeedbacks } from "../model/FeedbackModel";
 
 class Feedback {
-    private clientId: mongoose.Schema.Types.ObjectId;
-    private roomId: mongoose.Schema.Types.ObjectId;
+    private clientId: mongoose.Types.ObjectId;
+    private roomId: mongoose.Types.ObjectId;
     private rating: number;
     private comment?: string;
     private date: Date;
 
-    constructor(clientId: mongoose.Schema.Types.ObjectId, roomId: mongoose.Schema.Types.ObjectId, rating: number, date: Date, comment?: string) {
+    constructor(clientId: mongoose.Types.ObjectId, roomId: mongoose.Types.ObjectId, rating: number, date: Date, comment?: string) {
         this.clientId = clientId;
         this.roomId = roomId;
         this.rating = rating;
@@ -21,7 +22,7 @@ class Feedback {
         return this.clientId;
     }
 
-    public setClientId(clientId: mongoose.Schema.Types.ObjectId) {
+    public setClientId(clientId: mongoose.Types.ObjectId) {
         this.clientId = clientId;
     }
 
@@ -29,7 +30,7 @@ class Feedback {
         return this.roomId;
     }
 
-    public setRoomId(roomId: mongoose.Schema.Types.ObjectId) {
+    public setRoomId(roomId: mongoose.Types.ObjectId) {
         this.roomId = roomId;
     }
 
@@ -55,6 +56,21 @@ class Feedback {
 
     public setDate(date: Date) {
         this.date = date;
+    }
+
+    public toIFeedbacks(): IFeedbacks {
+        const feedback: IFeedbacks = <IFeedbacks> {
+            clientId: this.clientId,
+            roomId: this.roomId,
+            rating: this.rating,
+            comment: this.comment,
+            date: this.date
+        };
+        return feedback;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

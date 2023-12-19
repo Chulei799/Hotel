@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
+import { IClientsServices } from '../model/ClientsServicesModel';
 
 class ClientsServices {
-    private clientId: mongoose.Schema.Types.ObjectId;
-    private serviceId: mongoose.Schema.Types.ObjectId;
+    private clientId: mongoose.Types.ObjectId;
+    private serviceId: mongoose.Types.ObjectId;
     private date: Date;
 
-    constructor(clientId: mongoose.Schema.Types.ObjectId, serviceId: mongoose.Schema.Types.ObjectId, date: Date) {
+    constructor(clientId: mongoose.Types.ObjectId, serviceId: mongoose.Types.ObjectId, date: Date) {
         this.clientId = clientId;
         this.serviceId = serviceId;
         this.date = date;
@@ -15,7 +16,7 @@ class ClientsServices {
         return this.clientId;
     }
 
-    public setClientId(clientId: mongoose.Schema.Types.ObjectId) {
+    public setClientId(clientId: mongoose.Types.ObjectId) {
         this.clientId = clientId;
     }
 
@@ -23,7 +24,7 @@ class ClientsServices {
         return this.serviceId;
     }
 
-    public setServiceId(serviceId: mongoose.Schema.Types.ObjectId) {
+    public setServiceId(serviceId: mongoose.Types.ObjectId) {
         this.serviceId = serviceId;
     }
 
@@ -33,6 +34,19 @@ class ClientsServices {
 
     public setDate(date: Date) {
         this.date = date;
+    }
+
+    public toIClientsServices(): IClientsServices {
+        const clientsServices: IClientsServices = <IClientsServices> {
+            clientId: this.clientId,
+            serviceId: this.serviceId,
+            date: this.date
+        };
+        return clientsServices;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

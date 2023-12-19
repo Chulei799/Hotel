@@ -7,8 +7,8 @@ export enum Status {
 }
 
 export interface IReservations extends Document {
-    clientId: mongoose.Schema.Types.ObjectId;
-    roomId: mongoose.Schema.Types.ObjectId;
+    clientId: mongoose.Types.ObjectId;
+    roomId: mongoose.Types.ObjectId;
     checkInDate: Date;
     checkOutDate: Date;
     status: Status;
