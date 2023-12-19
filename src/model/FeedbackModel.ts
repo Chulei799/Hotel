@@ -1,8 +1,8 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IFeedbacks extends Document {
-    clientId: mongoose.Schema.Types.ObjectId;
-    roomId: mongoose.Schema.Types.ObjectId;
+    clientId: mongoose.Types.ObjectId;
+    roomId: mongoose.Types.ObjectId;
     rating: number;
     comment: string;
     date: Date;

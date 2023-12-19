@@ -1,3 +1,5 @@
+import { IEmployees } from "../model/EmployeesModel";
+
 class Employees {
     private surname: string;
     private name: string;
@@ -71,6 +73,23 @@ class Employees {
 
     public setSalary(salary: number) {
         this.salary = salary;
+    }
+
+    public toIEmployees(): IEmployees {
+        const employee: IEmployees = <IEmployees> {
+            surname: this.surname,
+            name: this.name,
+            email: this.email,
+            phoneNumber: this.phoneNumber,
+            position: this.position,
+            birthday: this.birthday,
+            salary: this.salary
+        };
+        return employee;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 

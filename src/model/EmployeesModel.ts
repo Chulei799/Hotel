@@ -45,6 +45,6 @@ const employeesSchema = new Schema<IEmployees>({
     versionKey: false
 });
 
-const EmployeesModel = mongoose.model<IEmployees>('employees', employeesSchema);
+const EmployeesModel = mongoose.model<IEmployees>('Employees', employeesSchema);
 
 export default EmployeesModel;

@@ -1,3 +1,5 @@
+import { IHotelServices } from "../model/HotelServicesModel";
+
 class HotelServices {
     private name: string;
     private price: number;
@@ -21,6 +23,18 @@ class HotelServices {
 
     public setPrice(price: number) {
         this.price = price;
+    }
+
+    public toIHotelServices(): IHotelServices {
+        const hotelService: IHotelServices = <IHotelServices> {
+            name: this.name,
+            price: this.price
+        };
+        return hotelService;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
     }
 }
 
